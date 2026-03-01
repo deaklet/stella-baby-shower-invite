@@ -1,0 +1,689 @@
+/* ============================================================
+   Baby Shower Invite — Soft & Elegant Stylesheet
+   ============================================================ */
+
+/* --- Custom Properties --- */
+:root {
+  --blush: #f4c2c2;
+  --blush-light: #fce4e4;
+  --cream: #fdf6ec;
+  --sage: #b2c9ab;
+  --sage-dark: #8fb085;
+  --text: #4a4a4a;
+  --text-light: #7a7a7a;
+  --grey: #d1d1d1;
+  --white: #ffffff;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lift: 0 8px 28px rgba(0, 0, 0, 0.10);
+  --transition: 0.3s ease;
+}
+
+/* --- Reset & Global --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background-color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Main Container --- */
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--sage-dark);
+  text-decoration: none;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+#hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  animation: fadeSlideUp 0.8s ease both;
+}
+
+#event-title {
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* --- Decorative Divider --- */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.25rem auto 1.75rem;
+  max-width: 280px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to var(--dir, right), var(--blush), transparent);
+}
+
+.divider::before {
+  --dir: right;
+  background: linear-gradient(to right, transparent, var(--blush));
+}
+
+.divider::after {
+  --dir: left;
+  background: linear-gradient(to right, var(--blush), transparent);
+}
+
+.divider-ornament {
+  font-size: 1.1rem;
+  color: var(--blush);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* --- Event Details --- */
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
+}
+
+.event-details p {
+  font-size: 1.05rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  background: var(--blush-light);
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  min-width: 72px;
+  text-align: center;
+  display: inline-block;
+}
+
+.welcome-message {
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0.5rem auto 0;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   SECTIONS — Shared
+   ============================================================ */
+section {
+  margin-bottom: 3rem;
+}
+
+#rsvp {
+  animation: fadeSlideUp 0.8s ease 0.15s both;
+}
+
+#gifts {
+  animation: fadeSlideUp 0.8s ease 0.3s both;
+}
+
+#rsvp h2,
+#gifts h2 {
+  text-align: center;
+  margin-bottom: 0.35rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+}
+
+/* ============================================================
+   RSVP FORM
+   ============================================================ */
+#rsvp-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem 2rem 2.25rem;
+  box-shadow: var(--shadow-soft);
+  max-width: 520px;
+  margin: 1.25rem auto 0;
+}
+
+.form-group {
+  margin-bottom: 1.35rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.form-group .optional {
+  font-weight: 400;
+  color: var(--text-light);
+  font-size: 0.82rem;
+}
+
+/* --- Text Inputs & Textarea --- */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--grey);
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--blush);
+  box-shadow: 0 0 0 3px rgba(244, 194, 194, 0.25);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #b5b5b5;
+  font-weight: 300;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input[type="number"] {
+  max-width: 100px;
+}
+
+/* --- Custom Radio Buttons --- */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 400;
+  padding: 0.55rem 0.85rem;
+  border: 1.5px solid var(--grey);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.radio-label:hover {
+  border-color: var(--blush);
+  background: rgba(252, 228, 228, 0.25);
+}
+
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--grey);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blush);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked ~ .radio-custom {
+  border-color: var(--blush);
+}
+
+.radio-label input[type="radio"]:checked ~ .radio-custom::after {
+  transform: scale(1);
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+  border-color: var(--blush);
+  background: rgba(252, 228, 228, 0.3);
+}
+
+/* --- Party Size Transition --- */
+#party-size-group {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+#party-size-group[data-hidden="true"] {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition), transform 0.15s ease, box-shadow var(--transition);
+  width: 100%;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  background: var(--sage-dark);
+  box-shadow: 0 4px 14px rgba(143, 176, 133, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--text-light);
+  border: 1.5px solid var(--grey);
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-light);
+  color: var(--text);
+}
+
+/* --- Success Message --- */
+.success-msg {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--sage-dark);
+  font-weight: 500;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+/* ============================================================
+   GIFT REGISTRY
+   ============================================================ */
+#gift-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- Gift Card --- */
+.gift-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.4rem;
+  position: relative;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gift-card h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+}
+
+.gift-card .gift-desc {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
+}
+
+.gift-card .gift-price {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sage-dark);
+  margin-bottom: 0;
+}
+
+/* --- Available State --- */
+.gift-card.available {
+  cursor: pointer;
+}
+
+.gift-card.available:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.gift-card.available:active {
+  transform: translateY(-2px);
+}
+
+/* --- Claimed State --- */
+.gift-card.claimed {
+  opacity: 0.55;
+  filter: grayscale(40%);
+  pointer-events: none;
+}
+
+/* --- Taken Badge --- */
+.taken-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--blush-light);
+  color: #c48a8a;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+}
+
+/* ============================================================
+   CLAIM MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 74, 74, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.25s ease both;
+}
+
+.modal-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem 2rem 1.75rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  animation: scaleIn 0.3s ease both;
+}
+
+.modal-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+}
+
+.modal-card > p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal-card strong {
+  color: var(--text);
+}
+
+.modal-card .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.modal-actions .btn-primary {
+  width: auto;
+  padding: 0.65rem 1.5rem;
+}
+
+/* ============================================================
+   LOADING STATE
+   ============================================================ */
+.loading {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  padding: 2.5rem 1rem;
+  animation: pulse 1.8s ease-in-out infinite;
+  grid-column: 1 / -1;
+}
+
+/* ============================================================
+   FOOTER NOTE
+   ============================================================ */
+.footer-note {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(209, 209, 209, 0.4);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(209, 209, 209, 0.4);
+}
+
+footer p {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* ============================================================
+   RESPONSIVE — Below 640px
+   ============================================================ */
+@media (max-width: 640px) {
+  #app {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+  }
+
+  #hero {
+    padding: 2.5rem 0.5rem 2rem;
+  }
+
+  .event-details p {
+    font-size: 0.95rem;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .detail-label {
+    font-size: 0.7rem;
+    min-width: auto;
+  }
+
+  #rsvp-form {
+    padding: 1.5rem 1.25rem 1.75rem;
+  }
+
+  #gift-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .modal-card {
+    padding: 1.5rem 1.25rem 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- Small refinements for very small screens --- */
+@media (max-width: 380px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .radio-label {
+    font-size: 0.88rem;
+    padding: 0.5rem 0.7rem;
+  }
+}
