@@ -1,30 +1,31 @@
 /* ============================================================
-   Baby Shower Invite — Soft & Elegant Stylesheet
+   Baby Shower Invite — Watercolor Floral Elegance
    ============================================================ */
 
-/* --- Custom Properties --- */
 :root {
-  --blush: #f4c2c2;
-  --blush-light: #fce4e4;
-  --cream: #fdf6ec;
-  --sage: #b2c9ab;
-  --sage-dark: #8fb085;
-  --text: #4a4a4a;
-  --text-light: #7a7a7a;
-  --grey: #d1d1d1;
+  --rose: #c9a0a0;
+  --rose-dark: #a07878;
+  --rose-pale: #f5eaea;
+  --ivory: #faf8f5;
+  --ivory-warm: #f3ece3;
+  --leaf: #7a9a72;
+  --leaf-muted: #a7b8a0;
+  --gold: #b8a070;
+  --text: #3d3530;
+  --text-soft: #5c5450;
+  --text-muted: #9a8f85;
+  --border: #e0d8d0;
   --white: #ffffff;
 
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --shadow-lift: 0 8px 28px rgba(0, 0, 0, 0.10);
-  --transition: 0.3s ease;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-card: 0 4px 30px rgba(61, 53, 48, 0.07);
+  --shadow-lift: 0 12px 40px rgba(61, 53, 48, 0.12);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- Reset & Global --- */
-*,
-*::before,
-*::after {
+/* --- Reset --- */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -32,221 +33,290 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--text);
-  background-color: var(--cream);
+  background-color: #f9f6f2;
+  background-image: url('images/watercolor-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* --- Main Container --- */
 #app {
-  max-width: 800px;
+  max-width: 740px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  padding: 1.5rem 1.25rem 3rem;
 }
 
 /* --- Typography --- */
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
   color: var(--text);
-}
-
-h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
 }
 
 h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0.03em;
 }
 
 h3 {
-  font-size: 1.15rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
-p {
-  margin-bottom: 0.5rem;
-}
-
-a {
-  color: var(--sage-dark);
-  text-decoration: none;
-}
-
 /* ============================================================
-   HERO SECTION
+   HERO — INVITATION CARD WITH FLORAL FRAME
    ============================================================ */
 #hero {
+  padding: 0;
+  margin-bottom: 3.5rem;
+  animation: fadeIn 0.8s ease both;
+}
+
+.invite-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--white);
+}
+
+/* The floral frame image */
+.floral-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.floral-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text content over the frame */
+.invite-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  padding: 3.5rem 1rem 2.5rem;
-  animation: fadeSlideUp 0.8s ease both;
-}
-
-#event-title {
-  color: var(--text);
-  margin-bottom: 1rem;
-}
-
-/* --- Decorative Divider --- */
-.divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.25rem auto 1.75rem;
-  max-width: 280px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to var(--dir, right), var(--blush), transparent);
-}
-
-.divider::before {
-  --dir: right;
-  background: linear-gradient(to right, transparent, var(--blush));
-}
-
-.divider::after {
-  --dir: left;
-  background: linear-gradient(to right, var(--blush), transparent);
-}
-
-.divider-ornament {
-  font-size: 1.1rem;
-  color: var(--blush);
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-/* --- Event Details --- */
-.event-details {
+  padding: clamp(5rem, 14vw, 7.5rem) clamp(2rem, 8vw, 5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 1.75rem;
 }
 
-.event-details p {
-  font-size: 1.05rem;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.detail-label {
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+.invite-kicker {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-light);
-  background: var(--blush-light);
-  padding: 0.15rem 0.6rem;
-  border-radius: 4px;
-  min-width: 72px;
-  text-align: center;
-  display: inline-block;
+  color: var(--text-soft);
+  margin-bottom: 0.25rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.3s forwards;
 }
 
-.welcome-message {
+.script-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 9vw, 4.5rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 0.15rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.5s forwards;
+}
+
+.invite-honoring {
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  color: var(--text-light);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.65s forwards;
+}
+
+.invite-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 1.75rem;
+  line-height: 1.3;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.8s forwards;
+}
+
+.invite-details {
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.95s forwards;
+}
+
+.invite-datetime {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 0.25rem;
+}
+
+.invite-datetime span + span::before {
+  content: ' \2022 ';
+  margin: 0 0.15rem;
+}
+
+.invite-location {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.78rem, 1.8vw, 0.88rem);
+  font-weight: 400;
+  color: var(--text-soft);
+  letter-spacing: 0.03em;
+  max-width: 320px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.invite-location a {
+  color: var(--text-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.invite-location a:hover {
+  color: var(--rose-dark);
+  border-color: var(--rose);
+}
+
+.invite-message {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
   font-size: 1rem;
-  max-width: 520px;
-  margin: 0.5rem auto 0;
-  line-height: 1.7;
+  max-width: 340px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 1.1s forwards;
 }
 
 /* ============================================================
-   SECTIONS — Shared
+   SECTION HEADERS
    ============================================================ */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border));
+}
+
+.section-header .section-line:last-child {
+  background: linear-gradient(to left, transparent, var(--border));
+}
+
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 #rsvp {
-  animation: fadeSlideUp 0.8s ease 0.15s both;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.15s forwards;
 }
 
 #gifts {
-  animation: fadeSlideUp 0.8s ease 0.3s both;
-}
-
-#rsvp h2,
-#gifts h2 {
-  text-align: center;
-  margin-bottom: 0.35rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease 0.25s forwards;
 }
 
 .section-subtitle {
   text-align: center;
-  color: var(--text-light);
-  font-size: 0.95rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text-muted);
+  font-size: 1.05rem;
   margin-bottom: 1.75rem;
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* ============================================================
    RSVP FORM
    ============================================================ */
 #rsvp-form {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem 2rem 2.25rem;
-  box-shadow: var(--shadow-soft);
-  max-width: 520px;
-  margin: 1.25rem auto 0;
+  padding: 2.25rem 2rem 2.5rem;
+  box-shadow: var(--shadow-card);
+  max-width: 500px;
+  margin: 1rem auto 0;
 }
 
 .form-group {
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.4rem;
 }
 
-.form-group label {
+.form-group > label {
   display: block;
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-bottom: 0.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.45rem;
   color: var(--text);
+  letter-spacing: 0.02em;
 }
 
 .form-group .optional {
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  color: var(--text-light);
-  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.88rem;
 }
 
-/* --- Text Inputs & Textarea --- */
+/* --- Inputs --- */
 input[type="text"],
 input[type="number"],
 input[type="email"],
 textarea {
   width: 100%;
-  padding: 0.7rem 0.9rem;
-  border: 1.5px solid var(--grey);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
   color: var(--text);
-  background: var(--white);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  background: rgba(250, 248, 245, 0.7);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
   outline: none;
 }
 
@@ -254,14 +324,17 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="email"]:focus,
 textarea:focus {
-  border-color: var(--blush);
-  box-shadow: 0 0 0 3px rgba(244, 194, 194, 0.25);
+  border-color: var(--rose);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(201, 160, 160, 0.15);
 }
 
 input[type="text"]::placeholder,
 textarea::placeholder {
-  color: #b5b5b5;
+  color: var(--text-muted);
   font-weight: 300;
+  font-size: 0.95rem;
+  font-style: italic;
 }
 
 textarea {
@@ -273,30 +346,32 @@ input[type="number"] {
   max-width: 100px;
 }
 
-/* --- Custom Radio Buttons --- */
+/* --- Radio Buttons --- */
 .radio-group {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  margin-top: 0.3rem;
+  margin-top: 0.35rem;
 }
 
 .radio-label {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.7rem;
   cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 400;
-  padding: 0.55rem 0.85rem;
-  border: 1.5px solid var(--grey);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
+  background: rgba(250, 248, 245, 0.7);
   transition: border-color var(--transition), background-color var(--transition);
 }
 
 .radio-label:hover {
-  border-color: var(--blush);
-  background: rgba(252, 228, 228, 0.25);
+  border-color: var(--rose);
+  background: var(--rose-pale);
 }
 
 .radio-label input[type="radio"] {
@@ -309,12 +384,12 @@ input[type="number"] {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid var(--grey);
+  border: 1.5px solid var(--border);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color var(--transition), background-color var(--transition);
+  transition: border-color var(--transition);
 }
 
 .radio-custom::after {
@@ -322,13 +397,13 @@ input[type="number"] {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--blush);
+  background: var(--rose);
   transform: scale(0);
-  transition: transform 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .radio-label input[type="radio"]:checked ~ .radio-custom {
-  border-color: var(--blush);
+  border-color: var(--rose);
 }
 
 .radio-label input[type="radio"]:checked ~ .radio-custom::after {
@@ -336,42 +411,40 @@ input[type="number"] {
 }
 
 .radio-label:has(input[type="radio"]:checked) {
-  border-color: var(--blush);
-  background: rgba(252, 228, 228, 0.3);
+  border-color: var(--rose);
+  background: var(--rose-pale);
 }
 
-/* --- Party Size Transition --- */
+/* --- Party Size --- */
 #party-size-group {
   overflow: hidden;
   transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
 }
 
-#party-size-group[data-hidden="true"] {
-  max-height: 0;
-  opacity: 0;
-  margin-bottom: 0;
-}
-
 /* --- Buttons --- */
 .btn-primary {
-  display: inline-block;
-  background: var(--sage);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--rose-dark);
   color: var(--white);
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 0.8rem 2rem;
   border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color var(--transition), transform 0.15s ease, box-shadow var(--transition);
   width: 100%;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .btn-primary:hover {
-  background: var(--sage-dark);
-  box-shadow: 0 4px 14px rgba(143, 176, 133, 0.3);
+  background: #8a6565;
+  box-shadow: 0 6px 20px rgba(160, 120, 120, 0.25);
 }
 
 .btn-primary:active {
@@ -379,38 +452,40 @@ input[type="number"] {
 }
 
 .btn-primary:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
 .btn-secondary {
   display: inline-block;
   background: transparent;
-  color: var(--text-light);
-  border: 1.5px solid var(--grey);
+  color: var(--text-soft);
+  border: 1px solid var(--border);
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
   font-weight: 500;
+  letter-spacing: 0.06em;
   cursor: pointer;
   transition: border-color var(--transition), color var(--transition);
 }
 
 .btn-secondary:hover {
-  border-color: var(--text-light);
+  border-color: var(--text-soft);
   color: var(--text);
 }
 
-/* --- Success Message --- */
+/* --- Success --- */
 .success-msg {
   text-align: center;
-  font-size: 1.1rem;
-  color: var(--sage-dark);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
   font-weight: 500;
-  padding: 2rem 1rem;
+  color: var(--leaf);
+  padding: 2.5rem 1rem;
   line-height: 1.6;
-  animation: fadeSlideUp 0.5s ease both;
+  animation: fadeSlideUp 0.6s ease both;
 }
 
 /* ============================================================
@@ -418,40 +493,44 @@ input[type="number"] {
    ============================================================ */
 #gift-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
 }
 
-/* --- Gift Card --- */
 .gift-card {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem 1.4rem;
   position: relative;
-  box-shadow: var(--shadow-soft);
-  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .gift-card h3 {
   margin-bottom: 0.4rem;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  color: var(--text);
 }
 
 .gift-card .gift-desc {
-  font-size: 0.88rem;
-  color: var(--text-light);
-  margin-bottom: 0.35rem;
-  line-height: 1.5;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  line-height: 1.55;
 }
 
 .gift-card .gift-price {
-  font-size: 0.82rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--sage-dark);
+  color: var(--leaf);
   margin-bottom: 0;
 }
 
-/* --- Available State --- */
 .gift-card.available {
   cursor: pointer;
 }
@@ -459,29 +538,29 @@ input[type="number"] {
 .gift-card.available:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lift);
+  border-color: var(--rose);
 }
 
 .gift-card.available:active {
   transform: translateY(-2px);
 }
 
-/* --- Claimed State --- */
 .gift-card.claimed {
-  opacity: 0.55;
-  filter: grayscale(40%);
+  opacity: 0.5;
+  filter: grayscale(30%);
   pointer-events: none;
 }
 
-/* --- Taken Badge --- */
 .taken-badge {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  background: var(--blush-light);
-  color: #c48a8a;
-  font-size: 0.7rem;
+  background: var(--rose-pale);
+  color: var(--rose-dark);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.2rem 0.65rem;
   border-radius: 20px;
@@ -493,9 +572,9 @@ input[type="number"] {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(74, 74, 74, 0.45);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(61, 53, 48, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,27 +585,31 @@ input[type="number"] {
 
 .modal-card {
   background: var(--white);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem 2rem 1.75rem;
+  padding: 2.25rem 2rem 2rem;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  animation: scaleIn 0.3s ease both;
+  box-shadow: 0 16px 48px rgba(61, 53, 48, 0.15);
+  animation: modalEnter 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 .modal-card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 .modal-card > p {
-  color: var(--text-light);
-  font-size: 0.95rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text-muted);
+  font-size: 1.05rem;
   margin-bottom: 1.25rem;
 }
 
 .modal-card strong {
   color: var(--text);
+  font-weight: 500;
 }
 
 .modal-card .form-group {
@@ -546,27 +629,17 @@ input[type="number"] {
 }
 
 /* ============================================================
-   LOADING STATE
+   LOADING
    ============================================================ */
 .loading {
   text-align: center;
-  color: var(--text-light);
-  font-size: 0.95rem;
-  padding: 2.5rem 1rem;
-  animation: pulse 1.8s ease-in-out infinite;
+  color: var(--text-muted);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  padding: 3rem 1rem;
+  animation: pulse 2s ease-in-out infinite;
   grid-column: 1 / -1;
-}
-
-/* ============================================================
-   FOOTER NOTE
-   ============================================================ */
-.footer-note {
-  text-align: center;
-  color: var(--text-light);
-  font-size: 0.8rem;
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(209, 209, 209, 0.4);
 }
 
 /* ============================================================
@@ -574,30 +647,25 @@ input[type="number"] {
    ============================================================ */
 footer {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(209, 209, 209, 0.4);
+  border-top: 1px solid rgba(224, 216, 208, 0.5);
 }
 
 footer p {
-  color: var(--text-light);
-  font-size: 0.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text-muted);
+  font-size: 0.9rem;
   font-style: italic;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 
 /* ============================================================
    ANIMATIONS
    ============================================================ */
 @keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -605,55 +673,35 @@ footer p {
   to   { opacity: 1; }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.9) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50%      { opacity: 0.4; }
+  50%      { opacity: 0.35; }
 }
 
 /* ============================================================
-   RESPONSIVE — Below 640px
+   RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
   #app {
-    padding: 1.25rem 1rem 3rem;
+    padding: 0.75rem 0.75rem 2.5rem;
   }
 
-  h1 {
-    font-size: 2.1rem;
+  .invite-content {
+    padding: clamp(4rem, 12vw, 6rem) clamp(1.25rem, 5vw, 2.5rem);
   }
 
-  h2 {
-    font-size: 1.45rem;
-  }
-
-  #hero {
-    padding: 2.5rem 0.5rem 2rem;
-  }
-
-  .event-details p {
-    font-size: 0.95rem;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  .detail-label {
-    font-size: 0.7rem;
-    min-width: auto;
+  .invite-name {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    letter-spacing: 0.1em;
   }
 
   #rsvp-form {
-    padding: 1.5rem 1.25rem 1.75rem;
+    padding: 1.75rem 1.25rem 2rem;
   }
 
   #gift-grid {
@@ -662,7 +710,7 @@ footer p {
   }
 
   .modal-card {
-    padding: 1.5rem 1.25rem 1.5rem;
+    padding: 1.75rem 1.25rem 1.5rem;
   }
 
   .modal-actions {
@@ -674,16 +722,19 @@ footer p {
     width: 100%;
     text-align: center;
   }
-}
 
-/* --- Small refinements for very small screens --- */
-@media (max-width: 380px) {
-  h1 {
-    font-size: 1.8rem;
+  .section-header {
+    gap: 0.75rem;
   }
 
+  .section-line {
+    max-width: 50px;
+  }
+}
+
+@media (max-width: 380px) {
   .radio-label {
-    font-size: 0.88rem;
-    padding: 0.5rem 0.7rem;
+    font-size: 0.86rem;
+    padding: 0.55rem 0.8rem;
   }
 }

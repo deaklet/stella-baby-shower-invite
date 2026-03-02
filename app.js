@@ -23,8 +23,18 @@ async function loadConfig() {
       document.getElementById('event-title').textContent = c.event_name || 'Baby Shower';
       document.getElementById('event-date').textContent = c.date || '';
       document.getElementById('event-time').textContent = c.time || '';
-      document.getElementById('event-location').textContent = c.location || '';
+      const locationEl = document.getElementById('event-location');
+      const locationText = c.location || '';
+      locationEl.textContent = locationText;
+      if (locationText) {
+        locationEl.href = 'https://www.google.com/maps/search/' + encodeURIComponent(locationText);
+      }
       document.getElementById('event-message').textContent = c.message || '';
+      // Set honoree name if available
+      const honoreeEl = document.getElementById('honoree-name');
+      if (honoreeEl) {
+        honoreeEl.textContent = c.honoree || '';
+      }
     }
   } catch (err) {
     console.error('Failed to load config:', err);
