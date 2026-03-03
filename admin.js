@@ -2,7 +2,7 @@
 // Baby Shower Invite — Admin Page JavaScript
 // ============================================================
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbzsb2QY_NXejESHKvfzKU7xckM_alsjtuAG3j7pA1m-v9EN_3rZv1y8NHzIKR7GchFZ/exec'; // Replace after deploying
+const API_URL = 'https://script.google.com/macros/s/AKfycbxcdoIpVTq4An9dYtWVihcZvpIwEnPqSwLaX0gdyLdt_qc4XNLxjFJBYxJiBxeG8_PX/exec'; // Replace after deploying
 let adminPassword = 'stella1221';
 
 // ============================================================
