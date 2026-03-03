@@ -13,7 +13,7 @@
   --gold: #b8a070;
   --text: #3d3530;
   --text-soft: #5c5450;
-  --text-muted: #9a8f85;
+  --text-muted: #6b6058;
   --border: #e0d8d0;
   --white: #ffffff;
 
@@ -36,9 +36,9 @@ html {
 }
 
 body {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: var(--text);
   background-color: #f9f6f2;
@@ -53,14 +53,14 @@ body {
 
 /* --- Main Container --- */
 #app {
-  max-width: 740px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
 }
 
 /* --- Typography --- */
 h1, h2, h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   color: var(--text);
 }
 
@@ -71,7 +71,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -91,6 +91,8 @@ h3 {
   overflow: hidden;
   box-shadow: var(--shadow-card);
   background: var(--white);
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 /* The floral frame image */
@@ -119,7 +121,7 @@ h3 {
 }
 
 .invite-kicker {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: clamp(0.85rem, 2vw, 1rem);
   font-weight: 400;
   letter-spacing: 0.22em;
@@ -142,7 +144,7 @@ h3 {
 }
 
 .invite-honoring {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-style: italic;
   font-size: clamp(0.9rem, 2vw, 1.05rem);
   color: var(--text-muted);
@@ -152,7 +154,7 @@ h3 {
 }
 
 .invite-name {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: clamp(1.5rem, 4.5vw, 2.2rem);
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -171,7 +173,7 @@ h3 {
 }
 
 .invite-datetime {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: clamp(0.85rem, 2vw, 1rem);
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -186,7 +188,7 @@ h3 {
 }
 
 .invite-location {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: clamp(0.78rem, 1.8vw, 0.88rem);
   font-weight: 400;
   color: var(--text-soft);
@@ -209,7 +211,7 @@ h3 {
 }
 
 .invite-message {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-style: italic;
   font-weight: 400;
   color: var(--text-muted);
@@ -258,17 +260,23 @@ section {
 
 .section-subtitle {
   text-align: center;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   margin-bottom: 1.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: italic;
 }
 
 /* ============================================================
    RSVP FORM
    ============================================================ */
+#rsvp {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #rsvp-form {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
@@ -287,7 +295,7 @@ section {
 
 .form-group > label {
   display: block;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-weight: 600;
   font-size: 1.05rem;
   margin-bottom: 0.45rem;
@@ -296,7 +304,7 @@ section {
 }
 
 .form-group .optional {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-weight: 400;
   font-style: italic;
   color: var(--text-muted);
@@ -312,7 +320,7 @@ textarea {
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 1rem;
   color: var(--text);
   background: rgba(250, 248, 245, 0.7);
@@ -359,7 +367,7 @@ input[type="number"] {
   align-items: center;
   gap: 0.7rem;
   cursor: pointer;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 1.05rem;
   font-weight: 500;
   padding: 0.65rem 1rem;
@@ -432,7 +440,7 @@ input[type="number"] {
   border: none;
   padding: 0.8rem 2rem;
   border-radius: var(--radius-sm);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
@@ -463,7 +471,7 @@ input[type="number"] {
   border: 1px solid var(--border);
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-sm);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -479,7 +487,7 @@ input[type="number"] {
 /* --- Success --- */
 .success-msg {
   text-align: center;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--leaf);
@@ -493,7 +501,7 @@ input[type="number"] {
    ============================================================ */
 #gift-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 
@@ -538,7 +546,7 @@ input[type="number"] {
 
 .gift-link {
   display: inline-block;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--rose-dark);
@@ -579,7 +587,7 @@ input[type="number"] {
   right: 0.75rem;
   background: var(--rose-pale);
   color: var(--rose-dark);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -623,7 +631,7 @@ input[type="number"] {
 }
 
 .modal-card > p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   color: var(--text-muted);
   font-size: 1.05rem;
   margin-bottom: 1.25rem;
@@ -656,7 +664,7 @@ input[type="number"] {
 .loading {
   text-align: center;
   color: var(--text-muted);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-style: italic;
   font-size: 1.05rem;
   padding: 3rem 1rem;
@@ -675,7 +683,7 @@ footer {
 }
 
 footer p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   color: var(--text-muted);
   font-size: 0.9rem;
   font-style: italic;
@@ -727,7 +735,7 @@ footer p {
   }
 
   #gift-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
@@ -751,6 +759,12 @@ footer p {
 
   .section-line {
     max-width: 50px;
+  }
+}
+
+@media (max-width: 420px) {
+  #gift-grid {
+    grid-template-columns: 1fr;
   }
 }
 
