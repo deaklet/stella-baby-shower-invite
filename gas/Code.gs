@@ -1,6 +1,6 @@
 // === CONFIGURATION ===
-const ADMIN_PASSWORD = 'changeme123'; // Change this!
-const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID'; // Replace after creating sheet
+const ADMIN_PASSWORD = 'stella123'; // Change this!
+const SPREADSHEET_ID = '13be29XNkqqnqLnsONN6wUVHnXwMWIt7p8JSnWeEVIpc'; // Replace after creating sheet
 
 function getSheet(name) {
   return SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(name);
