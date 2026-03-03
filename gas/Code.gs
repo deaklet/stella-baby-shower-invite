@@ -57,6 +57,9 @@ function handleRequest(e) {
         result = adminAuth(e.parameter.password, () =>
           unclaimGift(e.parameter.row));
         break;
+      case 'testExtract':
+        result = testExtract(e.parameter.url);
+        break;
       default:
         result = { error: 'Unknown action' };
     }
@@ -103,6 +106,20 @@ function extractImageFromUrl(url) {
     // Silently fail — image is optional
   }
   return '';
+}
+
+function testExtract(url) {
+  if (!url) return { error: 'No URL provided' };
+  try {
+    var apiUrl = 'https://api.microlink.io?url=' + encodeURIComponent(url);
+    var response = UrlFetchApp.fetch(apiUrl, { muteHttpExceptions: true });
+    var raw = response.getContentText();
+    var data = JSON.parse(raw);
+    var imageUrl = (data.status === 'success' && data.data && data.data.image && data.data.image.url) ? data.data.image.url : '';
+    return { success: true, imageUrl: imageUrl, microlinkStatus: data.status };
+  } catch (e) {
+    return { error: e.message, stack: e.stack };
+  }
 }
 
 // === GIFTS ===
