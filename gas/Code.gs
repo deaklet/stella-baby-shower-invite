@@ -95,16 +95,30 @@ function extractImageFromUrl(url) {
   try {
     const response = UrlFetchApp.fetch(url, {
       muteHttpExceptions: true,
-      followRedirects: true
+      followRedirects: true,
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible)' }
     });
     const html = response.getContentText();
-    // Try og:image first, then twitter:image
+
+    // 1. Standard og:image
     const ogMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
       || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
     if (ogMatch) return ogMatch[1];
+
+    // 2. twitter:image
     const twMatch = html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i)
       || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']twitter:image["']/i);
     if (twMatch) return twMatch[1];
+
+    // 3. Amazon — landingImage data-old-hires or src
+    const amzHires = html.match(/id=["']landingImage["'][^>]+data-old-hires=["']([^"']+)["']/i);
+    if (amzHires) return amzHires[1];
+    const amzSrc = html.match(/id=["']landingImage["'][^>]+src=["']([^"']+)["']/i);
+    if (amzSrc) return amzSrc[1];
+
+    // 4. Generic fallback — first large product image from common patterns
+    const imgMatch = html.match(/<img[^>]+src=["'](https:\/\/[^"']+(?:_SL1500_|_SL1000_|\/large\/|\/product\/)[^"']+)["']/i);
+    if (imgMatch) return imgMatch[1];
   } catch (e) {
     // Silently fail — image is optional
   }
