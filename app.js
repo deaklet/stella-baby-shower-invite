@@ -2,7 +2,7 @@
 // Baby Shower Invite — Guest Page JavaScript
 // ============================================================
 
-const API_URL = 'https://script.google.com/macros/s/AKfycby3_S5bLfmZmlhUcr6pxKrfmMMwZWI6eljS-5VMYBtUD7ZyiZs96waUHJa0c-vE4FrF/exec'; // Replace after deploying
+const API_URL = 'https://script.google.com/macros/s/AKfycbwtAMuJVi-MUxPvznJ3X5eGlu-W_jYIdWmdSmJBDxMswZdngigta2bUcMl6zZmMpyE/exec'; // Replace after deploying
 
 document.addEventListener('DOMContentLoaded', () => {
   loadConfig();
@@ -136,9 +136,9 @@ function renderGifts(gifts) {
       <div class="gift-card ${claimed ? 'claimed' : 'available'}"
            ${!claimed ? `onclick="openClaimModal(${gift.row}, '${escapeAttr(gift.name)}')"` : ''}>
         ${claimed ? '<span class="taken-badge">Taken</span>' : ''}
+        ${gift.imageUrl ? `<div class="gift-img"><img src="${escapeAttr(gift.imageUrl)}" alt="${escapeAttr(gift.name)}" loading="lazy"></div>` : ''}
         <h3>${escapeHtml(gift.name)}</h3>
-        ${gift.description ? `<p class="gift-desc">${escapeHtml(gift.description)}</p>` : ''}
-        ${gift.priceRange ? `<p class="gift-price">${escapeHtml(gift.priceRange)}</p>` : ''}
+        ${gift.link ? `<a class="gift-link" href="${escapeAttr(gift.link)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">View Reference</a>` : ''}
       </div>`;
   }).join('');
 }

@@ -99,8 +99,8 @@ function getGifts() {
     gifts.push({
       row: i + 1,
       name: data[i][0],
-      description: data[i][1],
-      priceRange: data[i][2],
+      imageUrl: data[i][1],
+      link: data[i][2],
       claimedBy: data[i][3] || '',
       claimedAt: data[i][4] || ''
     });
@@ -122,7 +122,7 @@ function claimGift(row, claimedBy) {
 
 function addGift(data) {
   const sheet = getSheet('Gifts');
-  sheet.appendRow([data.name, data.description, data.priceRange, '', '']);
+  sheet.appendRow([data.name, data.imageUrl, data.link, '', '']);
   return { success: true };
 }
 
@@ -130,8 +130,8 @@ function editGift(row, data) {
   const sheet = getSheet('Gifts');
   row = parseInt(row);
   sheet.getRange(row, 1).setValue(data.name);
-  sheet.getRange(row, 2).setValue(data.description);
-  sheet.getRange(row, 3).setValue(data.priceRange);
+  sheet.getRange(row, 2).setValue(data.imageUrl);
+  sheet.getRange(row, 3).setValue(data.link);
   return { success: true };
 }
 

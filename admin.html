@@ -46,8 +46,8 @@
         <form onsubmit="submitAddGift(event)">
           <div class="form-row">
             <input type="text" id="new-gift-name" placeholder="Gift name" required>
-            <input type="text" id="new-gift-desc" placeholder="Description (optional)">
-            <input type="text" id="new-gift-price" placeholder="Price range (e.g. $20-40)">
+            <input type="url" id="new-gift-image" placeholder="Image URL (optional)">
+            <input type="url" id="new-gift-link" placeholder="Product link (optional)">
           </div>
           <div class="form-actions">
             <button type="button" class="btn btn-cancel" onclick="closeAddGiftForm()">Cancel</button>
@@ -61,8 +61,8 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Description</th>
-              <th>Price Range</th>
+              <th>Image</th>
+              <th>Link</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -105,12 +105,12 @@
         <input type="text" id="edit-gift-name" required>
       </div>
       <div class="form-group">
-        <label>Description</label>
-        <input type="text" id="edit-gift-desc">
+        <label>Image URL</label>
+        <input type="url" id="edit-gift-image">
       </div>
       <div class="form-group">
-        <label>Price Range</label>
-        <input type="text" id="edit-gift-price">
+        <label>Product Link</label>
+        <input type="url" id="edit-gift-link">
       </div>
       <div class="modal-actions">
         <button class="btn btn-cancel" onclick="closeEditModal()">Cancel</button>

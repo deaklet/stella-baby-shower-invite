@@ -2,7 +2,7 @@
 // Baby Shower Invite — Admin Page JavaScript
 // ============================================================
 
-const API_URL = 'https://script.google.com/macros/s/AKfycby3_S5bLfmZmlhUcr6pxKrfmMMwZWI6eljS-5VMYBtUD7ZyiZs96waUHJa0c-vE4FrF/exec'; // Replace after deploying
+const API_URL = 'https://script.google.com/macros/s/AKfycbwtAMuJVi-MUxPvznJ3X5eGlu-W_jYIdWmdSmJBDxMswZdngigta2bUcMl6zZmMpyE/exec'; // Replace after deploying
 let adminPassword = 'stella1221';
 
 // ============================================================
@@ -80,15 +80,15 @@ function renderAdminGifts(gifts) {
       const claimed = !!gift.claimedBy;
       return `<tr>
       <td>${escapeHtml(gift.name)}</td>
-      <td>${escapeHtml(gift.description || '\u2014')}</td>
-      <td>${escapeHtml(gift.priceRange || '\u2014')}</td>
+      <td>${gift.imageUrl ? `<img src="${escapeAttr(gift.imageUrl)}" alt="" style="width:48px;height:48px;object-fit:contain;border-radius:4px;">` : '\u2014'}</td>
+      <td>${gift.link ? `<a href="${escapeAttr(gift.link)}" target="_blank" rel="noopener noreferrer" style="color:#4a90d9;">View</a>` : '\u2014'}</td>
       <td>${
         claimed
           ? `<span class="badge badge-claimed">Claimed by ${escapeHtml(gift.claimedBy)}</span>`
           : '<span class="badge badge-available">Available</span>'
       }</td>
       <td class="actions">
-        <button class="btn btn-sm" onclick="openEditModal(${gift.row}, '${escapeAttr(gift.name)}', '${escapeAttr(gift.description || '')}', '${escapeAttr(gift.priceRange || '')}')">Edit</button>${
+        <button class="btn btn-sm" onclick="openEditModal(${gift.row}, '${escapeAttr(gift.name)}', '${escapeAttr(gift.imageUrl || '')}', '${escapeAttr(gift.link || '')}')">Edit</button>${
           claimed
             ? ` <button class="btn btn-sm btn-warning" onclick="unclaimGift(${gift.row})">Unclaim</button>`
             : ''
@@ -111,16 +111,16 @@ function openAddGiftForm() {
 function closeAddGiftForm() {
   document.getElementById('add-gift-form').style.display = 'none';
   document.getElementById('new-gift-name').value = '';
-  document.getElementById('new-gift-desc').value = '';
-  document.getElementById('new-gift-price').value = '';
+  document.getElementById('new-gift-image').value = '';
+  document.getElementById('new-gift-link').value = '';
 }
 
 async function submitAddGift(e) {
   e.preventDefault();
   const payload = {
     name: document.getElementById('new-gift-name').value.trim(),
-    description: document.getElementById('new-gift-desc').value.trim(),
-    priceRange: document.getElementById('new-gift-price').value.trim(),
+    imageUrl: document.getElementById('new-gift-image').value.trim(),
+    link: document.getElementById('new-gift-link').value.trim(),
   };
 
   try {
@@ -146,11 +146,11 @@ async function submitAddGift(e) {
 // ============================================================
 // GIFTS — Edit Modal
 // ============================================================
-function openEditModal(row, name, desc, price) {
+function openEditModal(row, name, imageUrl, link) {
   document.getElementById('edit-row').value = row;
   document.getElementById('edit-gift-name').value = name;
-  document.getElementById('edit-gift-desc').value = desc;
-  document.getElementById('edit-gift-price').value = price;
+  document.getElementById('edit-gift-image').value = imageUrl;
+  document.getElementById('edit-gift-link').value = link;
   document.getElementById('edit-modal').style.display = 'flex';
   document.getElementById('edit-gift-name').focus();
 }
@@ -163,8 +163,8 @@ async function submitEditGift() {
   const row = document.getElementById('edit-row').value;
   const payload = {
     name: document.getElementById('edit-gift-name').value.trim(),
-    description: document.getElementById('edit-gift-desc').value.trim(),
-    priceRange: document.getElementById('edit-gift-price').value.trim(),
+    imageUrl: document.getElementById('edit-gift-image').value.trim(),
+    link: document.getElementById('edit-gift-link').value.trim(),
   };
 
   try {
