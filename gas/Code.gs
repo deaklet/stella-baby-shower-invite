@@ -88,6 +88,29 @@ function getConfig() {
   return { success: true, config };
 }
 
+// === IMAGE EXTRACTION ===
+
+function extractImageFromUrl(url) {
+  if (!url) return '';
+  try {
+    const response = UrlFetchApp.fetch(url, {
+      muteHttpExceptions: true,
+      followRedirects: true
+    });
+    const html = response.getContentText();
+    // Try og:image first, then twitter:image
+    const ogMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
+      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
+    if (ogMatch) return ogMatch[1];
+    const twMatch = html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i)
+      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']twitter:image["']/i);
+    if (twMatch) return twMatch[1];
+  } catch (e) {
+    // Silently fail — image is optional
+  }
+  return '';
+}
+
 // === GIFTS ===
 
 function getGifts() {
@@ -122,15 +145,17 @@ function claimGift(row, claimedBy) {
 
 function addGift(data) {
   const sheet = getSheet('Gifts');
-  sheet.appendRow([data.name, data.imageUrl, data.link, '', '']);
+  const imageUrl = extractImageFromUrl(data.link);
+  sheet.appendRow([data.name, imageUrl, data.link, '', '']);
   return { success: true };
 }
 
 function editGift(row, data) {
   const sheet = getSheet('Gifts');
   row = parseInt(row);
+  const imageUrl = extractImageFromUrl(data.link);
   sheet.getRange(row, 1).setValue(data.name);
-  sheet.getRange(row, 2).setValue(data.imageUrl);
+  sheet.getRange(row, 2).setValue(imageUrl);
   sheet.getRange(row, 3).setValue(data.link);
   return { success: true };
 }

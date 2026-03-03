@@ -2,7 +2,7 @@
 // Baby Shower Invite — Guest Page JavaScript
 // ============================================================
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbxAhaOluuSMr4f3FPjeYFqDT0apj8XgMrQDtZL8Q6-36EzXotb_iq2uOFwVTQPuPIM/exec'; // Replace after deploying
+const API_URL = 'https://script.google.com/macros/s/AKfycbzLJR_iIB13iuq6qWqY7M-xadvfu5YAF4tTV_s5kI-EGC9WgKpV0CYgOYpv4FmjDAU/exec'; // Replace after deploying
 
 document.addEventListener('DOMContentLoaded', () => {
   loadConfig();

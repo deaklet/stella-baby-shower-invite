@@ -2,7 +2,7 @@
 // Baby Shower Invite — Admin Page JavaScript
 // ============================================================
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbxAhaOluuSMr4f3FPjeYFqDT0apj8XgMrQDtZL8Q6-36EzXotb_iq2uOFwVTQPuPIM/exec'; // Replace after deploying
+const API_URL = 'https://script.google.com/macros/s/AKfycbzLJR_iIB13iuq6qWqY7M-xadvfu5YAF4tTV_s5kI-EGC9WgKpV0CYgOYpv4FmjDAU/exec'; // Replace after deploying
 let adminPassword = 'stella1221';
 
 // ============================================================
@@ -88,7 +88,7 @@ function renderAdminGifts(gifts) {
           : '<span class="badge badge-available">Available</span>'
       }</td>
       <td class="actions">
-        <button class="btn btn-sm" onclick="openEditModal(${gift.row}, '${escapeAttr(gift.name)}', '${escapeAttr(gift.imageUrl || '')}', '${escapeAttr(gift.link || '')}')">Edit</button>${
+        <button class="btn btn-sm" onclick="openEditModal(${gift.row}, '${escapeAttr(gift.name)}', '${escapeAttr(gift.link || '')}')">Edit</button>${
           claimed
             ? ` <button class="btn btn-sm btn-warning" onclick="unclaimGift(${gift.row})">Unclaim</button>`
             : ''
@@ -111,7 +111,6 @@ function openAddGiftForm() {
 function closeAddGiftForm() {
   document.getElementById('add-gift-form').style.display = 'none';
   document.getElementById('new-gift-name').value = '';
-  document.getElementById('new-gift-image').value = '';
   document.getElementById('new-gift-link').value = '';
 }
 
@@ -119,7 +118,6 @@ async function submitAddGift(e) {
   e.preventDefault();
   const payload = {
     name: document.getElementById('new-gift-name').value.trim(),
-    imageUrl: document.getElementById('new-gift-image').value.trim(),
     link: document.getElementById('new-gift-link').value.trim(),
   };
 
@@ -146,10 +144,9 @@ async function submitAddGift(e) {
 // ============================================================
 // GIFTS — Edit Modal
 // ============================================================
-function openEditModal(row, name, imageUrl, link) {
+function openEditModal(row, name, link) {
   document.getElementById('edit-row').value = row;
   document.getElementById('edit-gift-name').value = name;
-  document.getElementById('edit-gift-image').value = imageUrl;
   document.getElementById('edit-gift-link').value = link;
   document.getElementById('edit-modal').style.display = 'flex';
   document.getElementById('edit-gift-name').focus();
@@ -163,7 +160,6 @@ async function submitEditGift() {
   const row = document.getElementById('edit-row').value;
   const payload = {
     name: document.getElementById('edit-gift-name').value.trim(),
-    imageUrl: document.getElementById('edit-gift-image').value.trim(),
     link: document.getElementById('edit-gift-link').value.trim(),
   };
 
