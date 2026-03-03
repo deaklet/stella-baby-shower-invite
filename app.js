@@ -140,7 +140,14 @@ function renderGifts(gifts) {
         <h3>${escapeHtml(gift.name)}</h3>
         ${gift.link ? `<a class="gift-link" href="${escapeAttr(gift.link)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">View Reference</a>` : ''}
       </div>`;
-  }).join('');
+  }).join('') +
+  `<div class="gift-card gift-card-surprise">
+      <div class="gift-img gift-surprise-icon">
+        <span>🎁</span>
+      </div>
+      <h3>Something of your choice</h3>
+      <p class="gift-surprise-text">Feel free to surprise us with something you'd love to give!</p>
+    </div>`;
 }
 
 // ============================================================

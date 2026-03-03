@@ -575,6 +575,31 @@ input[type="number"] {
   transform: translateY(-2px);
 }
 
+.gift-card-surprise {
+  border-style: dashed;
+  background: rgba(250, 248, 245, 0.6);
+}
+
+.gift-surprise-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ivory-warm);
+}
+
+.gift-surprise-icon span {
+  font-size: 3.5rem;
+}
+
+.gift-surprise-text {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 0 1.25rem 1.15rem;
+  line-height: 1.5;
+}
+
 .gift-card.claimed {
   opacity: 0.5;
   filter: grayscale(30%);
