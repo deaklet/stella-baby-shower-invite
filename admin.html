@@ -47,6 +47,7 @@
           <div class="form-row">
             <input type="text" id="new-gift-name" placeholder="Gift name" required>
             <input type="url" id="new-gift-link" placeholder="Product link (optional)">
+            <input type="url" id="new-gift-image" placeholder="Image URL (leave empty to auto-detect)">
           </div>
           <div class="form-actions">
             <button type="button" class="btn btn-cancel" onclick="closeAddGiftForm()">Cancel</button>
@@ -106,6 +107,10 @@
       <div class="form-group">
         <label>Product Link</label>
         <input type="url" id="edit-gift-link">
+      </div>
+      <div class="form-group">
+        <label>Image URL <span style="font-weight:normal;color:#888;">(leave empty to auto-detect)</span></label>
+        <input type="url" id="edit-gift-image">
       </div>
       <div class="modal-actions">
         <button class="btn btn-cancel" onclick="closeEditModal()">Cancel</button>

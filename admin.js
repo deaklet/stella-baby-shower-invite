@@ -88,7 +88,7 @@ function renderAdminGifts(gifts) {
           : '<span class="badge badge-available">Available</span>'
       }</td>
       <td class="actions">
-        <button class="btn btn-sm" onclick="openEditModal(${gift.row}, '${escapeAttr(gift.name)}', '${escapeAttr(gift.link || '')}')">Edit</button>${
+        <button class="btn btn-sm" onclick="openEditModal(${gift.row}, '${escapeAttr(gift.name)}', '${escapeAttr(gift.link || '')}', '${escapeAttr(gift.imageUrl || '')}')">Edit</button>${
           claimed
             ? ` <button class="btn btn-sm btn-warning" onclick="unclaimGift(${gift.row})">Unclaim</button>`
             : ''
@@ -112,6 +112,7 @@ function closeAddGiftForm() {
   document.getElementById('add-gift-form').style.display = 'none';
   document.getElementById('new-gift-name').value = '';
   document.getElementById('new-gift-link').value = '';
+  document.getElementById('new-gift-image').value = '';
 }
 
 async function submitAddGift(e) {
@@ -119,6 +120,7 @@ async function submitAddGift(e) {
   const payload = {
     name: document.getElementById('new-gift-name').value.trim(),
     link: document.getElementById('new-gift-link').value.trim(),
+    imageUrl: document.getElementById('new-gift-image').value.trim(),
   };
 
   try {
@@ -144,10 +146,11 @@ async function submitAddGift(e) {
 // ============================================================
 // GIFTS — Edit Modal
 // ============================================================
-function openEditModal(row, name, link) {
+function openEditModal(row, name, link, imageUrl) {
   document.getElementById('edit-row').value = row;
   document.getElementById('edit-gift-name').value = name;
   document.getElementById('edit-gift-link').value = link;
+  document.getElementById('edit-gift-image').value = imageUrl;
   document.getElementById('edit-modal').style.display = 'flex';
   document.getElementById('edit-gift-name').focus();
 }
@@ -161,6 +164,7 @@ async function submitEditGift() {
   const payload = {
     name: document.getElementById('edit-gift-name').value.trim(),
     link: document.getElementById('edit-gift-link').value.trim(),
+    imageUrl: document.getElementById('edit-gift-image').value.trim(),
   };
 
   try {

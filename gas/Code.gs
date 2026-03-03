@@ -159,7 +159,7 @@ function claimGift(row, claimedBy) {
 
 function addGift(data) {
   const sheet = getSheet('Gifts');
-  const imageUrl = extractImageFromUrl(data.link);
+  const imageUrl = data.imageUrl || extractImageFromUrl(data.link);
   sheet.appendRow([data.name, imageUrl, data.link, '', '']);
   return { success: true };
 }
@@ -167,7 +167,7 @@ function addGift(data) {
 function editGift(row, data) {
   const sheet = getSheet('Gifts');
   row = parseInt(row);
-  const imageUrl = extractImageFromUrl(data.link);
+  const imageUrl = data.imageUrl || extractImageFromUrl(data.link);
   sheet.getRange(row, 1).setValue(data.name);
   sheet.getRange(row, 2).setValue(imageUrl);
   sheet.getRange(row, 3).setValue(data.link);
