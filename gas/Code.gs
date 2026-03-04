@@ -188,6 +188,18 @@ function unclaimGift(row) {
 // === RSVPS ===
 
 function submitRsvp(data) {
+  // If bringing a gift from registry, claim it first
+  if (data.giftRow && data.giftRow !== 'surprise') {
+    const giftSheet = getSheet('Gifts');
+    const row = parseInt(data.giftRow);
+    const current = giftSheet.getRange(row, 4).getValue();
+    if (current) {
+      return { success: false, error: 'This gift has already been claimed by someone else. Please select a different gift.' };
+    }
+    giftSheet.getRange(row, 4).setValue(data.name);
+    giftSheet.getRange(row, 5).setValue(new Date().toISOString());
+  }
+
   const sheet = getSheet('RSVPs');
   sheet.appendRow([
     data.name,
